@@ -84,7 +84,6 @@ function renderQuestion() {
   for (let i = 0; i < options.length; i++) {
     const option = options[i];
     const label = document.createElement("label");
-    // label.style.display = "block";
     label.textContent = option;
     label.classList.add("question-label");
     const input = document.createElement("input");
@@ -107,13 +106,6 @@ musicBtn.onclick = function () {
   }
   isPlaying = !isPlaying;
 };
-
-// const arr = ["vkl", "vikl", "qwerrt"];
-// const obj = {
-//   r: 100,
-//   g: 100,
-//   b: 150,
-// };
 
 nextBtn.onclick = function () {
   const selected = document.querySelector('input[name="answer"]:checked');
@@ -144,8 +136,6 @@ nextBtn.onclick = function () {
     renderQuestion();
   } else {
     finishTest();
-
-    // alert(`your score is ${score} / ${questions.length}`);
   }
 };
 
