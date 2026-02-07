@@ -42,17 +42,18 @@ function finishTest() {
     icon: iconStatus,
   });
 }
-
+function timeOn() {
+  let seconds = time % 60;
+  let minutes = Math.floor(time / 60);
+  let localTime = minutes + ":" + seconds;
+  timeTxt.textContent = localTime;
+}
 const timerInterval = setInterval(function () {
   time--;
+  timeOn();
 
   // new function >>>
-  function timeOn() {
-    let seconds = time % 60;
-    let minutes = Math.floor(time / 60);
-    let localTime = minutes + ":" + seconds;
-    timeTxt.textContent = localTime;
-  }
+
   // end of function <<<
 
   if (time <= 0) {
@@ -149,3 +150,4 @@ againBtn.onclick = function () {
 };
 
 renderQuestion();
+timeOn();
