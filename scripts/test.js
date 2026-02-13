@@ -59,7 +59,6 @@ const timerInterval = setInterval(function () {
   if (time <= 0) {
     finishTest();
   }
-  console.log(localTime);
 }, 1000);
 
 let currentIndex = 0;
