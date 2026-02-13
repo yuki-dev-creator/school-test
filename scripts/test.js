@@ -88,7 +88,7 @@ function renderQuestion() {
     label.textContent = option;
     label.classList.add("question-label");
     const input = document.createElement("input");
-    input.type = "radio";
+    input.type = "checkbox";
     input.name = "answer";
     input.value = i;
 
@@ -109,7 +109,7 @@ musicBtn.onclick = function () {
 };
 
 nextBtn.onclick = function () {
-  const selected = document.querySelector('input[name="answer"]:checked');
+  const selected = document.querySelectorAll('input[name="answer"]:checked');
   console.log(selected);
   if (selected === null) {
     Swal.fire({
@@ -121,9 +121,13 @@ nextBtn.onclick = function () {
     return;
   }
 
-  const value = +selected.value;
+  const usersValues = Array.from(selected).map((item) => +item.value);
+  const correctValues = questions[currentIndex].correct;
+  const isCorrect =
+    usersValues.length === correctValues.length &&
+    usersValues.every((val) => correctValues.includes(val));
 
-  if (value === questions[currentIndex].correct) {
+  if (isCorrect === true) {
     score++;
   }
 
