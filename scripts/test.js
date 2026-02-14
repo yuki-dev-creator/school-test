@@ -110,7 +110,7 @@ musicBtn.onclick = function () {
 nextBtn.onclick = function () {
   const selected = document.querySelectorAll('input[name="answer"]:checked');
   console.log(selected);
-  if (selected === null) {
+  if (selected.length === 0) {
     Swal.fire({
       title: "Error!",
       text: "Do you want to continue",
