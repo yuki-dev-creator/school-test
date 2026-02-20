@@ -133,3 +133,7 @@ section {
 .variants-row {
   display: flex;
 }
+
+.variants-card {
+  margin: 5px;
+}
