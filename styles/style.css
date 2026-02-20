@@ -156,6 +156,9 @@ section {
 .bg-green {
   background-color: rgb(85, 164, 85);
 }
+.bg-purple {
+  background-color: rgb(218, 133, 218);
+}
 .variants-title {
   margin-bottom: 20px;
 }
