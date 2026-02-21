@@ -3,7 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body {
+  font-family: "Viaoda Libre", serif;
+}
 ul,
 ol {
   list-style: none;
@@ -72,7 +74,7 @@ section {
 }
 /* font-family: "Viaoda Libre", serif; */
 .nav-link {
-  font-family: "Viaoda Libre", serif;
+  amily: "Viaoda Libre", serif;
   font-weight: 600;
   font-size: 20px;
 }
@@ -141,6 +143,12 @@ section {
   background-color: rgb(233, 240, 245);
   border-radius: 10px;
   padding: 0 10px;
+  padding-bottom: 20px;
+}
+
+.variants-card:hover {
+  transform: scale(1.05);
+  transition-duration: 0.5s;
 }
 
 .card-line {
@@ -161,4 +169,15 @@ section {
 }
 .variants-title {
   margin-bottom: 20px;
+}
+.card-title {
+  margin-bottom: 10px;
+}
+.card-link {
+  padding: 8px 12px;
+  color: azure;
+  border-radius: 10px;
+}
+.card-description {
+  margin-bottom: 15px;
 }

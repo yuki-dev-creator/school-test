@@ -42,9 +42,18 @@ function finishTest() {
     icon: iconStatus,
   });
 }
+// 0:9
+// 00:09 +
+// 00:011
 function timeOn() {
   let seconds = time % 60;
   let minutes = Math.floor(time / 60);
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
   let localTime = minutes + ":" + seconds;
   timeTxt.textContent = localTime;
 }
