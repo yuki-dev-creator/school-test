@@ -2,16 +2,16 @@ const app = document.getElementById("app");
 const nextBtn = document.getElementById("next");
 const progressTxt = document.getElementById("progress");
 const againBtn = document.getElementById("again");
-const backgroundAudio = new Audio("../audio/backgroundAudio.mp3");
+const backgroundAudio = new Audio("../../audio/backgroundAudio.mp3");
 const musicBtn = document.getElementById("music");
-const failAudio = new Audio("../audio/failAudio.mp3");
-const winAudio = new Audio("../audio/winAudio.mp3");
+const failAudio = new Audio("../../audio/failAudio.mp3");
+const winAudio = new Audio("../../audio/winAudio.mp3");
 const timeTxt = document.getElementById("time");
 let time = 0;
 let isPlaying = true;
 
-for (let i = 0; i < questions.length; i++) {
-  const element = questions[i];
+for (let i = 0; i < tasks.length; i++) {
+  const element = tasks[i];
   console.log(element.time);
   time = time + element.time;
 }
@@ -29,7 +29,7 @@ backgroundAudio.onended = function () {
 function finishTest() {
   clearInterval(timerInterval);
   nextBtn.style.display = "none";
-  const isWin = score > questions.length / 2;
+  const isWin = score > tasks.length / 2;
   let text = isWin ? "Good job!" : "Try again :(";
   let iconStatus = isWin ? "success" : "error";
   backgroundAudio.pause();
@@ -38,7 +38,7 @@ function finishTest() {
 
   Swal.fire({
     title: text,
-    text: `your score is ${score} / ${questions.length}`,
+    text: `your score is ${score} / ${tasks.length}`,
     icon: iconStatus,
   });
 }
@@ -68,7 +68,7 @@ let currentIndex = 0;
 let score = 0;
 
 function renderQuestion() {
-  const question = questions[currentIndex];
+  const question = tasks[currentIndex];
   console.log(question);
 
   app.innerHTML = "";
@@ -102,9 +102,11 @@ musicBtn.onclick = function () {
 };
 
 nextBtn.onclick = function () {
-  const selected = document.querySelectorAll('input[name="answer"]:checked');
-  console.log(selected);
-  if (selected.length === 0) {
+  const inputAnswer = document.querySelector('input[name="answer"]');
+  const userAnswer = inputAnswer.value;
+  if (userAnswer.length === 0) {
+    console.log(1);
+
     Swal.fire({
       title: "Error!",
       text: "Do you want to continue",
@@ -113,12 +115,11 @@ nextBtn.onclick = function () {
     });
     return;
   }
+  console.log(tasks[currentIndex].answer);
+  console.log(userAnswer);
 
-  const usersValues = Array.from(selected).map((item) => +item.value);
-  const correctValues = questions[currentIndex].correct;
-  const isCorrect =
-    usersValues.length === correctValues.length &&
-    usersValues.every((val) => correctValues.includes(val));
+  const isCorrect = userAnswer == tasks[currentIndex].answer;
+  console.log(isCorrect);
 
   if (isCorrect === true) {
     score++;
@@ -126,11 +127,11 @@ nextBtn.onclick = function () {
 
   currentIndex++;
 
-  if (currentIndex === questions.length - 1) {
+  if (currentIndex === tasks.length - 1) {
     nextBtn.textContent = "end test";
   }
 
-  if (currentIndex < questions.length) {
+  if (currentIndex < tasks.length) {
     renderQuestion();
   } else {
     finishTest();
