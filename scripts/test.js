@@ -9,11 +9,28 @@ const winAudio = new Audio("../audio/winAudio.mp3");
 const timeTxt = document.getElementById("time");
 let time = 0;
 let isPlaying = true;
+let timerInterval = null;
 
-for (let i = 0; i < questions.length; i++) {
-  const element = questions[i];
-  console.log(element.time);
-  time = time + element.time;
+function getTestTime() {
+  time = 0;
+  for (let i = 0; i < questions.length; i++) {
+    const element = questions[i];
+    console.log(element.time);
+    time = time + element.time;
+  }
+  timeOn();
+  timerInterval = setInterval(function () {
+    time--;
+    timeOn();
+
+    // new function >>>
+
+    // end of function <<<
+
+    if (time <= 0) {
+      finishTest();
+    }
+  }, 1000);
 }
 
 // first time show
@@ -57,18 +74,6 @@ function timeOn() {
   let localTime = minutes + ":" + seconds;
   timeTxt.textContent = localTime;
 }
-const timerInterval = setInterval(function () {
-  time--;
-  timeOn();
-
-  // new function >>>
-
-  // end of function <<<
-
-  if (time <= 0) {
-    finishTest();
-  }
-}, 1000);
 
 let currentIndex = 0;
 let score = 0;
@@ -157,9 +162,9 @@ againBtn.onclick = function () {
   score = 0;
   nextBtn.style.display = "inline-block";
   nextBtn.textContent = "next";
-
+  getTestTime();
   renderQuestion();
 };
 
+getTestTime();
 renderQuestion();
-timeOn();
