@@ -7,9 +7,12 @@ const musicBtn = document.getElementById("music");
 const failAudio = new Audio("../../audio/failAudio.mp3");
 const winAudio = new Audio("../../audio/winAudio.mp3");
 const timeTxt = document.getElementById("time");
+const hintBtn = document.getElementById("hint");
 let time = 0;
 let isPlaying = true;
 let timerInterval = null;
+
+let countHints = 0;
 
 function getTestTime() {
   time = 0;
@@ -56,6 +59,7 @@ function finishTest() {
     text: `your score is ${score} / ${tasks.length}`,
     icon: iconStatus,
   });
+  c;
 }
 
 function timeOn() {
@@ -93,6 +97,10 @@ function renderQuestion() {
   input.type = "text";
   input.name = "answer";
 
+  if (countHints <= 0) {
+    hintBtn.style.display = "none";
+  }
+
   label.appendChild(input);
   app.appendChild(label);
 }
@@ -125,7 +133,8 @@ nextBtn.onclick = function () {
   console.log(tasks[currentIndex].answer);
   console.log(userAnswer);
 
-  const isCorrect = userAnswer == tasks[currentIndex].answer;
+  const isCorrect =
+    userAnswer.toLowerCase() == tasks[currentIndex].answer.toLowerCase();
   console.log(isCorrect);
 
   if (isCorrect === true) {
