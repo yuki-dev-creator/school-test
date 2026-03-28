@@ -1,0 +1,47 @@
+/* xl-размер (>=1200px) */
+/* CSS для >=1200px */
+
+/* lg-размер (<=1199px) */
+@media (max-width: 1199px) {
+  /* CSS для ширины от 992px до 1199px */
+  .variants-row {
+    flex-wrap: wrap;
+    row-gap: 30px;
+  }
+  .variants-card {
+    width: 40%;
+  }
+}
+
+/* md-размер (<=991px) */
+@media (max-width: 991px) {
+  /* CSS для ширины от 768px до 991px */
+  .nav-list {
+    display: none;
+  }
+  #open {
+    display: inline-block;
+  }
+  .nav {
+    background-color: rgb(213, 29, 29);
+  }
+}
+
+/* sm-размер (<=768px) */
+@media (max-width: 767px) {
+  /* CSS для ширины от 576px до 767px */
+  .variants-card {
+    width: 80%;
+  }
+}
+
+/* xs-размер (<=575px) */
+@media (max-width: 575px) {
+  .intro-img {
+    display: none;
+  }
+  .intro-txt {
+    width: 100%;
+  }
+  /* CSS для ширины до 575px (включительно) */
+}

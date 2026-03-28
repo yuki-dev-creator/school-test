@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/adaptive.css" />
+    <script src="../scripts/menu.js" defer></script>
   </head>
   <body>
     <header class="container">
@@ -19,20 +21,14 @@
         <ul class="nav-list">
           <li>
             <a class="nav-link" href="../index.html">главная</a>
-          </li>
-          <li><a class="nav-link" href="./math.html">math </a></li>
-          <li>
-            <a class="nav-link" href="./geography.html">geography </a>
-          </li>
-          <li>
-            <a class="nav-link" href="./informatics.html">informatics </a>
-          </li>
+          
           <li>
             <a class="nav-link" href="./tasks.html">tasks </a>
           </li>
           <li>
             <a class="nav-link" href="#">categories </a>
           </li>
+          <button id="open">открыть</button>
         </ul>
       </nav>
     </header>
@@ -71,5 +67,22 @@
         </div>
       </section>
       </main>
+      <nav id="mobile-menu">
+      <ul class="nav-mobile">
+        <button id="close-menu">X</button>
+        
+        <li>
+          <a class="nav-link" href="../index.html">главная</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="../tasks.html">tasks </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#">categories </a>
+        </li>
+      </ul>
+    </nav>
+    </nav>
   </body>
 </html>

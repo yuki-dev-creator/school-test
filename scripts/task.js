@@ -8,11 +8,23 @@ const failAudio = new Audio("../../audio/failAudio.mp3");
 const winAudio = new Audio("../../audio/winAudio.mp3");
 const timeTxt = document.getElementById("time");
 const hintBtn = document.getElementById("hint");
+const hintTxt = document.getElementById("hint-text");
+const countHintsTxt = document.getElementById("count-hint");
 let time = 0;
 let isPlaying = true;
 let timerInterval = null;
+let currentIndex = 0;
+let score = 0;
+let countHints = 3;
 
-let countHints = 0;
+backgroundAudio.volume = 0.3;
+backgroundAudio.play();
+backgroundAudio.onended = function () {
+  backgroundAudio.currentTime = 0;
+  backgroundAudio.play();
+};
+
+countHintsTxt.textContent = `Количество подсказок: ${countHints}`;
 
 function getTestTime() {
   time = 0;
@@ -33,16 +45,6 @@ function getTestTime() {
     }
   }, 1000);
 }
-
-// first time show
-//time (seconds) -> 2:00
-
-backgroundAudio.volume = 0.3;
-backgroundAudio.play();
-backgroundAudio.onended = function () {
-  backgroundAudio.currentTime = 0;
-  backgroundAudio.play();
-};
 
 function finishTest() {
   clearInterval(timerInterval);
@@ -75,14 +77,12 @@ function timeOn() {
   timeTxt.textContent = localTime;
 }
 
-let currentIndex = 0;
-let score = 0;
-
 function renderQuestion() {
   const question = tasks[currentIndex];
   console.log(question);
 
   app.innerHTML = "";
+  hintTxt.textContent = "";
 
   progressTxt.textContent = `Вопрос № ${currentIndex + 1}`;
   const title = document.createElement("h3");
@@ -99,6 +99,8 @@ function renderQuestion() {
 
   if (countHints <= 0) {
     hintBtn.style.display = "none";
+  } else {
+    hintBtn.style.display = "inline-block";
   }
 
   label.appendChild(input);
@@ -134,7 +136,8 @@ nextBtn.onclick = function () {
   console.log(userAnswer);
 
   const isCorrect =
-    userAnswer.toLowerCase() == tasks[currentIndex].answer.toLowerCase();
+    userAnswer.toLowerCase() ==
+    tasks[currentIndex].answer.toString().toLowerCase();
   console.log(isCorrect);
 
   if (isCorrect === true) {
@@ -162,6 +165,15 @@ againBtn.onclick = function () {
   clearInterval(timerInterval);
   getTestTime();
   renderQuestion();
+};
+
+hintBtn.onclick = function () {
+  hintTxt.textContent = tasks[currentIndex].hint;
+  hintBtn.style.display = "none";
+  countHints--;
+  if (countHints !== 0)
+    countHintsTxt.textContent = `Количество подсказок: ${countHints}`;
+  else countHintsTxt.textContent = "123";
 };
 
 getTestTime();

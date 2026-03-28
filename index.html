@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/adaptive.css" />
+    <script src="./scripts/menu.js" defer></script>
   </head>
   <body>
     <header class="container">
@@ -20,13 +22,7 @@
           <li>
             <a class="nav-link" href="#">главная</a>
           </li>
-          <li><a class="nav-link" href="pages/math.html">math </a></li>
-          <li>
-            <a class="nav-link" href="pages/geography.html">geography </a>
-          </li>
-          <li>
-            <a class="nav-link" href="pages/informatics.html">informatics </a>
-          </li>
+
           <li>
             <a class="nav-link" href="pages/tasks.html">tasks </a>
           </li>
@@ -34,6 +30,7 @@
             <a class="nav-link" href="pages/categories.html">categories </a>
           </li>
         </ul>
+        <button id="open">открыть</button>
       </nav>
     </header>
     <main>
@@ -48,9 +45,9 @@
             уровень прямо сейчас!
           </p>
         </div>
-        <img src="./img/intro.png" alt="Тесты" />
+        <img class="intro-img" src="./img/intro.png" alt="Тесты" />
       </section>
-      <section class="variants">
+      <section class="variants container">
         <h1 class="variants-title">Наши тесты</h1>
         <div class="variants-row">
           <div class="variants-card">
@@ -63,7 +60,7 @@
           </div>
           <div class="variants-card">
             <div class="card-line bg-green"></div>
-            <img src="./img/geography.png" alt="География" />
+            <img src="./img/geography1.png" alt="География" />
             <h2 class="card-title">География</h2>
             <p class="card-description">Страны и океаны</p>
             <a href="pages/geography.html" class="card-link bg-green"
@@ -83,5 +80,20 @@
         </div>
       </section>
     </main>
+    <nav id="mobile-menu">
+      <ul class="nav-mobile">
+        <button id="close-menu">X</button>
+        <li>
+          <a class="nav-link" href="#">главная</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="pages/tasks.html">tasks </a>
+        </li>
+        <li>
+          <a class="nav-link" href="pages/categories.html">categories </a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>
