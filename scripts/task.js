@@ -10,6 +10,14 @@ const timeTxt = document.getElementById("time");
 const hintBtn = document.getElementById("hint");
 const hintTxt = document.getElementById("hint-text");
 const countHintsTxt = document.getElementById("count-hint");
+const testTitleTxt = document.getElementById("title");
+const dictionary = {
+  Математика: "math",
+  Информатика: "informatics",
+  география: "geography",
+};
+const testTitle = dictionary[testTitleTxt.textContent];
+console.log(testTitle);
 let time = 0;
 let isPlaying = true;
 let timerInterval = null;
@@ -46,6 +54,8 @@ function getTestTime() {
   }, 1000);
 }
 
+// score: 5
+// maximum:10
 function finishTest() {
   clearInterval(timerInterval);
   nextBtn.style.display = "none";
@@ -55,13 +65,16 @@ function finishTest() {
   backgroundAudio.pause();
   if (isWin) winAudio.play();
   else failAudio.play();
-
+  const finaleScore = {
+    score: score,
+    max: tasks.length,
+  };
+  console.log(finaleScore);
   Swal.fire({
     title: text,
     text: `your score is ${score} / ${tasks.length}`,
     icon: iconStatus,
   });
-  c;
 }
 
 function timeOn() {
@@ -173,7 +186,7 @@ hintBtn.onclick = function () {
   countHints--;
   if (countHints !== 0)
     countHintsTxt.textContent = `Количество подсказок: ${countHints}`;
-  else countHintsTxt.textContent = "123";
+  else countHintsTxt.textContent = "Увы, подсказок больше нет.";
 };
 
 getTestTime();
