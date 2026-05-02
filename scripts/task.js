@@ -69,6 +69,19 @@ function finishTest() {
     score: score,
     max: tasks.length,
   };
+
+  const saveTest = JSON.parse(localStorage.getItem("tests")) || {};
+
+  // push(finaleScore)
+  if (saveTest[testTitle]) {
+    saveTest[testTitle].push(finaleScore);
+    console.log(saveTest);
+  } else {
+    saveTest[testTitle] = [finaleScore];
+  }
+  //saveTest[testTitle] = [finaleScore];
+  localStorage.setItem("tests", JSON.stringify(saveTest));
+  console.log(saveTest);
   console.log(finaleScore);
   Swal.fire({
     title: text,
@@ -89,8 +102,10 @@ function timeOn() {
   let localTime = minutes + ":" + seconds;
   timeTxt.textContent = localTime;
 }
-
+// функция renderQuestion необходима для отрисовки вопроса или задачи
+// с необходимыми полями ввода
 function renderQuestion() {
+  // в переменной question лежит 1 из вопросов или задач из массива заданий по индексу currentIndex
   const question = tasks[currentIndex];
   console.log(question);
 

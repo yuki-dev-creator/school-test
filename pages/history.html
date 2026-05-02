@@ -4,9 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../data/geography.js" defer></script>
-    <script src="../scripts/test.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,13 +13,8 @@
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="../styles/adaptive.css" />
     <script src="../scripts/menu.js" defer></script>
+    <script src="../scripts/history.js" defer></script>
   </head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
   <body>
     <header class="container">
       <nav class="nav">
@@ -32,7 +24,7 @@
             <a class="nav-link" href="../index.html">главная</a>
           </li>
           <li>
-            <a class="nav-link" href="./history.html">история </a>
+            <a class="nav-link" href="#">история</a>
           </li>
           <li>
             <a class="nav-link" href="./categories.html">категории</a>
@@ -42,18 +34,7 @@
       </nav>
     </header>
     <main>
-      <section class="test-section container">
-        <h1 class="test-title" id="title">Geography tests</h1>
-        <p id="time"></p>
-        <div id="app"></div>
-        <p id="progress"></p>
-
-        <div class="test-btns">
-          <button class="btn btn-success" id="next">next</button>
-          <button class="btn btn-warn" id="again">again</button>
-          <button class="btn btn-stop" id="music">stop playing music</button>
-        </div>
-      </section>
+      <div id="history"></div>
     </main>
     <nav id="mobile-menu">
       <ul class="nav-mobile">
@@ -62,7 +43,7 @@
           <a class="nav-link" href="../index.html">главная</a>
         </li>
         <li>
-          <a class="nav-link" href="./history.html">история </a>
+          <a class="nav-link" href="#">история </a>
         </li>
         <li>
           <a class="nav-link" href="./categories.html">категории </a>
